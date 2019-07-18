@@ -2,7 +2,7 @@ import React from 'react';
 import Game from './components/Game.js';
 import Rules from './components/rules/rules.js';
 import About from './components/About.js';
-import Preset from './components/Preset.js';
+//import Preset from './components/Preset.js';
 
 function App() {
   return (
@@ -11,7 +11,7 @@ function App() {
       <Game />
       <Rules />
       <About />
-      <Preset />
+    
     </div>
   );
 }
