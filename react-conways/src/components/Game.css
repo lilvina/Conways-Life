@@ -9,3 +9,23 @@
   background: #ccc;
   position: absolute;
 }
+
+.controls {
+  margin-top: 10px;
+  text-align: center;
+}
+
+h2 {
+  text-align: center;
+}
+
+.button {
+  cursor: pointer;
+  margin-left: 20px;
+  border-radius: 5px;
+}
+
+.input {
+  margin-right: 12px;
+  margin-left: 12px;
+}

@@ -12,9 +12,9 @@ class Game extends React.Component {
     cells: [],
     interval: 100,
     isRunning: false,
-    CELL_SIZE: 10,
-    WIDTH: 500,
-    HEIGHT: 500
+    CELL_SIZE: 20,
+    WIDTH: 400,
+    HEIGHT: 400
   }
 
   rows = this.state.HEIGHT / this.state.CELL_SIZE
@@ -38,7 +38,7 @@ class Game extends React.Component {
     }
   }
 
-  handleIntervalChange = (e) => {
+  handleIntervalChange = e => {
     this.setState({
       interval: e.target.value
     })
@@ -113,13 +113,13 @@ class Game extends React.Component {
     }
   }
 
-  handleClick = (e) => {
+  handleClick = e => {
     const elemOffset = this.getElementOffset()
     console.log(e.clientY, elemOffset.y)
     const offsetX = e.clientX - elemOffset.x
     const offsetY = e.clientY - elemOffset.y
     const x = Math.floor(offsetX / this.state.CELL_SIZE)
-    const y = Math.floor(offsetY / this.state.CELL_SIZE) + 1
+    const y = Math.floor(offsetY / this.state.CELL_SIZE)
     console.log(y, x)
 
     if(x >= 0 && x <= this.cols && y >= 0 && y <= this.rows) {
@@ -140,7 +140,7 @@ class Game extends React.Component {
   handleRandom = () => {
     for(let y = 0; y < this.rows; y++) {
       for(let x = 0; x < this.cols; x++) {
-        this.board[y][x] = (Math.Random() >= 0.5)
+        this.board[y][x] = Math.random() >= 0.5
       }
     }
     this.setState({
@@ -190,6 +190,7 @@ class Game extends React.Component {
           <input
             value={this.state.interval}
             onChange={this.handleIntervalChange}
+            className="input"
           />
           msec{' '}
           { this.state.isRunning ? (
