@@ -2,9 +2,6 @@ import React from 'react';
 import Cell from './Cell.js';
 import './Game.css';
 
-// const CELL_SIZE = 10;
-// const WIDTH = 500;
-// const HEIGHT = 500;
 
 class Game extends React.Component {
 
@@ -14,7 +11,8 @@ class Game extends React.Component {
     isRunning: false,
     CELL_SIZE: 20,
     WIDTH: 400,
-    HEIGHT: 400
+    HEIGHT: 400,
+    counter: 0
   }
 
   rows = this.state.HEIGHT / this.state.CELL_SIZE
@@ -67,9 +65,10 @@ class Game extends React.Component {
 
     //add logic for each iteration
     this.board = newBoard
-    this.setState({
-      cells: this.makeCells()
-    })
+    this.setState((prevState, {counter}) => ({
+      cells: this.makeCells(),
+      counter: prevState.counter + 1,
+    }))
     this.timeoutHandler = window.setTimeout(() => {
       this.runIteration()
     }, this.state.interval)
@@ -133,6 +132,7 @@ class Game extends React.Component {
   handleClear = () => {
     this.board = this.makeEmptyBoard()
     this.setState({
+      counter: 0,
       cells: this.makeCells()
     })
   }
@@ -144,6 +144,7 @@ class Game extends React.Component {
       }
     }
     this.setState({
+      counter: 0,
       cells: this.makeCells()
     })
   }
@@ -174,9 +175,10 @@ class Game extends React.Component {
   }
 
   render() {
-    const { cells, interval, isRunning } = this.state
+    const { cells, interval, isRunning, CELL_SIZE, WIDTH, HEIGHT, counter } = this.state
     return (
       <div>
+        <h3 className="generation">Generation: {counter}</h3>
         <div className="Board"
           style={{ width: this.state.WIDTH, height: this.state.HEIGHT, backgroundSize: `${this.state.CELL_SIZE}px ${this.state.CELL_SIZE}px`}}
           onClick={this.handleClick}
