@@ -1,0 +1,4 @@
+[build]
+    base = './react-conways'
+    publish = './react-conways/build'
+    command = 'yarn build'

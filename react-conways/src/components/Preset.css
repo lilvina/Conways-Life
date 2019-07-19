@@ -1,0 +1,9 @@
+.preset {
+  margin: 0px 20px 40px;
+}
+
+.button-preset {
+  cursor: pointer;
+  padding: 6px 11px;
+  border-radius: 15px;
+}
